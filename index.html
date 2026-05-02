@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aap Ki Store</title>
+<style>
+body{font-family:Arial;background:#000;color:#fff;text-align:center;margin:0}
+.header{padding:15px;font-size:22px;font-weight:bold}
+.card{background:#111;margin:15px;padding:15px;border-radius:10px}
+input{padding:8px;margin:5px;width:80%}
+button{padding:10px;margin:5px;border:none;border-radius:5px}
+</style>
+</head>
+<body>
+
+<div class="header">🛍️ Aap Ki Store (Advanced)</div>
+
+<div class="card">
+<h3>Add Product</h3>
+<input id="name" placeholder="Product Name"><br>
+<input id="price" placeholder="Price"><br>
+<input id="discount" placeholder="Discount"><br>
+<input id="phone" placeholder="Contact Number"><br>
+<button onclick="addProduct()">Add Product</button>
+</div>
+
+<div id="products"></div>
+
+<script>
+let products=[];
+
+function addProduct(){
+  let name=document.getElementById("name").value;
+  let price=document.getElementById("price").value;
+  let discount=document.getElementById("discount").value;
+  let phone=document.getElementById("phone").value;
+
+  let product={name,price,discount,phone};
+  products.push(product);
+  render();
+}
+
+function render(){
+  let html="";
+  products.forEach(p=>{
+    html+=`<div class="card">
+      <h3>${p.name}</h3>
+      <p>Price: ₹${p.price}</p>
+      <p>Discount: ₹${p.discount}</p>
+      <p>Contact: ${p.phone}</p>
+      <button>Deliver</button>
+      <button>Dispute</button>
+    </div>`;
+  });
+  document.getElementById("products").innerHTML=html;
+}
+</script>
+
+</body>
+</html>
